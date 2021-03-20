@@ -16,7 +16,7 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: git make automake1.14 mingw-w64-x86_64-toolchain mingw-w64-x86_64-cairo mingw-w64-x86_64-tcl mingw-w64-x86_64-tk mingw-w64-x86_64-ghostscript
+          install: git make m4 automake1.14 mingw-w64-x86_64-toolchain mingw-w64-x86_64-cairo mingw-w64-x86_64-tcl mingw-w64-x86_64-tk mingw-w64-x86_64-ghostscript
       - name: Configure
         run: ./configure
       - name: Build
