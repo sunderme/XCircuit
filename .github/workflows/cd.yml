@@ -1,0 +1,25 @@
+name: CD
+on:
+  - push
+  - pull_request
+
+jobs:
+  build-win:
+    name: win build (msys2)
+    if: false
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: git make automake1.14 mingw-w64-x86_64-toolchain mingw-w64-x86_64-cairo mingw-w64-x86_64-tcl mingw-w64-x86_64-tk mingw-w64-ghostscript
+      - name: Configure
+        run: ./configure
+      - name: Build
+        run: make -j 2
+     
